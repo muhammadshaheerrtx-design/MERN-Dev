@@ -19,7 +19,7 @@ console.log(`Full Name: ${fullName}`);
 console.log(`Uppercase Name: ${fullName.toUpperCase()}`);
 console.log("\n\n");
 
-// 3. BOOLEANS & LOGIC
+// 3. BOOLEANS 
 const isLoggedIn = true;
 const hasRights = false;
 const canAccess = isLoggedIn && !hasRights;
@@ -40,10 +40,6 @@ console.log(`Parsed type: ${typeof parsedAge}`);    // number
 console.log(`Age next year: ${nextYearAge}`);
 console.log("\n\n");
 
-
-// ==========================================
-// 5. TYPE CONVERSION: Number/Boolean -> String
-// ==========================================
 const score = 98;
 const isPassed = true;
 
