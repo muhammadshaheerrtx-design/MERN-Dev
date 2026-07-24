@@ -1,0 +1,48 @@
+{
+  "profile": {
+    "userName": "The_guy",
+    "age": 32,
+    "bio": "I am the guy and i want to disintegrate into a the soup of nothingness",
+    "address": {
+      "city": "new York",
+      "country": "USA"
+    }
+  },
+  "posts": [
+    {
+      "id": "p_1",
+      "type": "video",
+      "captions": "nothing to see",
+      "likes": 1,
+      "datePosted": "27/01/2026"
+    },
+    {
+      "id": "p_1",
+      "type": "video",
+      "captions": "nothing to hear",
+      "likes": 23,
+      "datePosted": "29/01/2026"
+    },
+    {
+      "id": "p_2",
+      "type": "video",
+      "captions": "nothing to fathom",
+      "likes": 1999,
+      "datePosted": "11/05/2026"
+    },
+    {
+      "id": "p_3",
+      "type": "picture",
+      "captions": "a sea of life",
+      "likes": 1000000,
+      "datePosted": "22/07/2026"
+    },
+    {
+      "id": "p_4",
+      "type": "picture",
+      "captions": "The grandest of the grand finale",
+      "likes": 1,
+      "datePosted": "10/12/2026"
+    }
+  ]
+}
