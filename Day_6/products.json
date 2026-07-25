@@ -1,0 +1,147 @@
+[
+  {
+    "id": "p01",
+    "name": "Wireless Ergonomic Mouse",
+    "category": "Electronics",
+    "price": 49.99,
+    "stock": 35,
+    "rating": 4.5,
+    "tags": ["office", "tech", "ergonomic"],
+    "supplier": { "name": "LogiTech Solutions", "country": "Vietnam" }
+  },
+  {
+    "id": "p02",
+    "name": "Mechanical Gaming Keyboard",
+    "category": "Electronics",
+    "price": 119.99,
+    "stock": 0,
+    "rating": 4.8,
+    "tags": ["gaming", "rgb", "tech"],
+    "supplier": { "name": "KeyChron Inc", "country": "China" }
+  },
+  {
+    "id": "p03",
+    "name": "Noise Cancelling Headphones",
+    "category": "Electronics",
+    "price": 199.99,
+    "stock": 12,
+    "rating": 4.7,
+    "tags": ["audio", "travel", "wireless"],
+    "supplier": { "name": "SoundSphere", "country": "Japan" }
+  },
+  {
+    "id": "p04",
+    "name": "4K Ultra-Wide Monitor",
+    "category": "Electronics",
+    "price": 449.99,
+    "stock": 5,
+    "rating": 4.9,
+    "tags": ["display", "office", "4k"]
+  },
+  {
+    "id": "p05",
+    "name": "Standing Desk Converter",
+    "category": "Furniture",
+    "price": 159.0,
+    "stock": 18,
+    "rating": 4.3,
+    "tags": ["office", "health"],
+    "supplier": { "name": "FlexiSpace", "country": "Taiwan" }
+  },
+  {
+    "id": "p06",
+    "name": "Ergonomic Mesh Chair",
+    "category": "Furniture",
+    "price": 289.5,
+    "stock": 0,
+    "rating": 4.6,
+    "tags": ["office", "ergonomic", "seating"]
+  },
+  {
+    "id": "p07",
+    "name": "Minimalist Desk Mat",
+    "category": "Accessories",
+    "price": 24.99,
+    "stock": 80,
+    "rating": 4.2,
+    "tags": ["desk", "leather", "setup"],
+    "supplier": { "name": "CraftWorks", "country": "India" }
+  },
+  {
+    "id": "p08",
+    "name": "USB-C Multi-Port Hub",
+    "category": "Electronics",
+    "price": 39.99,
+    "stock": 50,
+    "rating": 4.1,
+    "tags": ["tech", "adapter", "travel"],
+    "supplier": { "name": "AnkerTech", "country": "China" }
+  },
+  {
+    "id": "p09",
+    "name": "Stainless Steel Water Bottle",
+    "category": "Lifestyle",
+    "price": 19.99,
+    "stock": 120,
+    "rating": 4.4,
+    "tags": ["eco", "fitness", "daily"]
+  },
+  {
+    "id": "p10",
+    "name": "Adjustable Laptop Stand",
+    "category": "Accessories",
+    "price": 34.99,
+    "stock": 25,
+    "rating": 4.6,
+    "tags": ["office", "aluminum", "tech"],
+    "supplier": { "name": "FlexiSpace", "country": "Taiwan" }
+  },
+  {
+    "id": "p11",
+    "name": "Smart LED Desk Lamp",
+    "category": "Furniture",
+    "price": 54.99,
+    "stock": 8,
+    "rating": 4.0,
+    "tags": ["lighting", "smart-home", "office"],
+    "supplier": { "name": "LumiTech", "country": "South Korea" }
+  },
+  {
+    "id": "p12",
+    "name": "Blue Light Blocking Glasses",
+    "category": "Accessories",
+    "price": 15.5,
+    "stock": 0,
+    "rating": 3.9,
+    "tags": ["health", "office", "eyewear"]
+  },
+  {
+    "id": "p13",
+    "name": "Portable SSD 1TB",
+    "category": "Electronics",
+    "price": 109.99,
+    "stock": 42,
+    "rating": 4.8,
+    "tags": ["storage", "tech", "fast"],
+    "supplier": { "name": "DataVault", "country": "USA" }
+  },
+  {
+    "id": "p14",
+    "name": "Wireless Charging Pad",
+    "category": "Electronics",
+    "price": 29.99,
+    "stock": 65,
+    "rating": 4.1,
+    "tags": ["charging", "wireless", "tech"],
+    "supplier": { "name": "AnkerTech", "country": "China" }
+  },
+  {
+    "id": "p15",
+    "name": "Cable Management Sleeve Kit",
+    "category": "Accessories",
+    "price": 12.99,
+    "stock": 100,
+    "rating": 4.5,
+    "tags": ["organization", "desk"]
+  }
+]
