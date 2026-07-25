@@ -25,6 +25,12 @@ The script loads a 15-item JSON dataset (`products.json`) and performs a series 
 
 ---
 
+
+## What It Does not Do 
+For now the project is not dynamic and does not take input from the user therefore it onlys works with predefined inputs 
+
+---
+
 ## File Structure
 
 ```text
