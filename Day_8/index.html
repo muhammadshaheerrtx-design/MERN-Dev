@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <style>
+      /* Simple layout resets */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px auto;
+        max-width: 400px;
+        padding: 0 16px;
+        color: #111;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+
+      /* Basic form layout */
+      .todo-form {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 6px 8px;
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-size: 0.95rem;
+      }
+
+      button {
+        padding: 6px 12px;
+        border: 1px solid #777;
+        background: #eee;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      button:hover {
+        background: #ddd;
+      }
+
+      /* Clean list styling */
+      .todo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-top: 1px solid #ccc;
+      }
+
+      .todo-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .todo-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .completed .todo-text {
+        text-decoration: line-through;
+        color: #777;
+      }
+
+      .btn-delete {
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #900;
+      }
+
+      .btn-delete:hover {
+        background: #fee;
+      }
+
+      .empty-state {
+        padding: 12px 0;
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+
+    <form class="todo-form" id="todoForm">
+      <input
+        type="text"
+        id="todoInput"
+        placeholder="New task..."
+        required
+        autocomplete="off"
+      />
+      <button type="submit">Add</button>
+    </form>
+
+    <ul class="todo-list" id="todoList"></ul>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
