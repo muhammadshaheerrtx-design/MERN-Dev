@@ -1,6 +1,6 @@
 # Dependencies
 node_modules/
-
+#l
 # Environment variables / secrets — never commit these
 .env
 .env.local
