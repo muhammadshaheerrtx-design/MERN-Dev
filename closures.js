@@ -19,6 +19,7 @@ function makeCounter(start = 0) {
 }
 
 const counterA = makeCounter();
+console.log("console",makeCounter().increment())
 const counterB = makeCounter(100);
 
 console.log("counterA.increment():", counterA.increment()); 
