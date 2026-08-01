@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto & Market Pulse Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Fonts for a clean modern dashboard look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-group">
+          <span class="logo-icon">⚡</span>
+          <h1>Market Pulse</h1>
+        </div>
+        <div id="status-container" class="status-badge">Initializing...</div>
+      </header>
+
+      <!-- Control Bar (Filters, Search, Sort) -->
+      <section class="control-bar">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path
+              fill="currentColor"
+              d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search by coin name or symbol..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="select-group">
+          <label for="sort-select">Sort By:</label>
+          <select id="sort-select">
+            <option value="market_cap_desc">Market Cap (High to Low)</option>
+            <option value="price_desc">Price (High to Low)</option>
+            <option value="price_asc">Price (Low to High)</option>
+            <option value="change_desc">24h Gainers</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Main Data Table -->
+      <main class="table-card">
+        <table class="crypto-table">
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Price (USD)</th>
+              <th>24h Change</th>
+              <th>Market Cap</th>
+            </tr>
+          </thead>
+          <tbody id="coin-table-body">
+            <!-- Dynamically populated by JS components -->
+            <tr>
+              <td colspan="4" class="loading-cell">Loading coin data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+
+    <!-- Entry Script (ES Modules) -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
