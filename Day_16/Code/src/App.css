@@ -1,0 +1,168 @@
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+}
+
+.app-header p {
+  margin: 0;
+  color: #666;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Styling */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #2d3748;
+}
+
+/* Form Styles */
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3182ce;
+}
+
+.input-error {
+  border-color: #e53e3e;
+}
+
+.error-text {
+  font-size: 12px;
+  color: #e53e3e;
+}
+
+.submit-btn {
+  margin-top: 8px;
+  padding: 12px;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* Book List Styles */
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #edf2f7;
+  border-radius: 6px;
+  background-color: #f7fafc;
+}
+
+.book-info h4 {
+  margin: 0 0 4px 0;
+  color: #2d3748;
+}
+
+.book-meta {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  color: #718096;
+}
+
+.book-rating {
+  font-size: 12px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background-color: #fed7d7;
+}
+
+.empty-message {
+  text-align: center;
+  color: #a0aec0;
+  margin: 20px 0;
+}
