@@ -1,16 +1,64 @@
-# React + Vite
+# Cyber Intel — Threat Intelligence SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A 5-page React Single Page Application that consumes and visualizes CISA's Known Exploited Vulnerabilities (KEV) dataset.
 
-Currently, two official plugins are available:
+## Features & Routes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `/` — **Dashboard:** High-level metrics, targeted vendors, and recently added threats.
+- `/vulnerabilities` — **CVE Catalog:** Full dataset with live text search, vendor filtering, and date sorting.
+- `/vulnerability/:cveId` — **Threat Details:** Dynamic parametric view for inspecting specific CVE remediation info and patch links.
+- `/ransomware` — **Ransomware Watchlist:** Dedicated filter showing vulnerabilities leveraged in ransomware campaigns.
+- `/about` — **Compliance Info:** Background on Federal Directive BOD 22-01 and system architecture.
+- `*` — **404 Page:** Route fallback handling.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 18, Vite
+- **Routing:** React Router DOM v6
+- **State Management:** React Context API
+- **Styling:** CSS3 (CSS Grid & Flexbox, Dark Theme)
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+cyber-intel/
+├── public/
+│   └── cisa.json
+├── src/
+│   ├── components/
+│   │   ├── FilterBar.jsx
+│   │   ├── MetricCard.jsx
+│   │   ├── Navbar.jsx
+│   │   └── VulnerabilityCard.jsx
+│   ├── context/
+│   │   └── VulnerabilityContext.jsx
+│   ├── pages/
+│   │   ├── AboutPage.jsx
+│   │   ├── HomePage.jsx
+│   │   ├── NotFoundPage.jsx
+│   │   ├── RansomwareWatchPage.jsx
+│   │   ├── VulnerabilityDetailPage.jsx
+│   │   └── VulnerabilityListPage.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+└── vite.config.js
+```
+
+## Getting Started
+
+Clone the repository:
+
+Bash
+git clone <your-repository-url>
+cd cyber-intel
+Install dependencies:
+
+Bash
+npm install
+Run development server:
+
+Bash
+npm run dev
+Open http://localhost:5173 in your browser.

@@ -1,0 +1,19 @@
+{
+  "name": "day19-express-api",
+  "version": "1.0.0",
+  "description": "Day 19 - Node & Express Fundamentals: a small in-memory Users API",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["express", "node", "api"],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
