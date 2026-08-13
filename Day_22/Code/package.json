@@ -1,0 +1,20 @@
+{
+  "name": "day21-hardened-api",
+  "version": "1.0.0",
+  "description": "Day 21 - Middleware, Validation, Config & CORS: hardened Products CRUD API",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

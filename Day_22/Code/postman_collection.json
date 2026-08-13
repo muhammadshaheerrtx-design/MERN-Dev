@@ -1,0 +1,234 @@
+{
+  "info": {
+    "name": "Day 22 - Products CRUD API",
+    "_postman_id": "d22-products-crud-api",
+    "description": "Full collection covering every endpoint of the Products API, happy paths and error paths, for Day 22 (API Testing & Clean Structure).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000", "type": "string" },
+    { "key": "createdId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Root / Health",
+      "item": [
+        {
+          "name": "GET / (welcome)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/"
+          }
+        },
+        {
+          "name": "GET /nonexistent (404 via notFound middleware)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nonexistent"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products - Happy Paths",
+      "item": [
+        {
+          "name": "GET /api/products (list all) - 200",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products"
+          }
+        },
+        {
+          "name": "GET /api/products?category=electronics - 200",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/products?category=electronics",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [{ "key": "category", "value": "electronics" }]
+            }
+          }
+        },
+        {
+          "name": "GET /api/products/1 (single) - 200",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/1"
+          }
+        },
+        {
+          "name": "POST /api/products (create) - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json && json.data && json.data.id) {",
+                  "  pm.collectionVariables.set('createdId', json.data.id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"USB-C Hub\",\n  \"price\": 2200,\n  \"category\": \"electronics\"\n}"
+            }
+          }
+        },
+        {
+          "name": "PATCH /api/products/{{createdId}} (partial update) - 200",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products/{{createdId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 1999\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT /api/products/{{createdId}} (full replace) - 200",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products/{{createdId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"USB-C Hub v2\",\n  \"price\": 2500,\n  \"category\": \"electronics\"\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/products/{{createdId}} - 200",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/products/{{createdId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products - Error Paths",
+      "item": [
+        {
+          "name": "GET /api/products/abc (invalid id) - 400",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/abc"
+          }
+        },
+        {
+          "name": "GET /api/products/999 (not found) - 404",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/999"
+          }
+        },
+        {
+          "name": "POST /api/products (missing fields) - 400",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bad\"\n}"
+            }
+          }
+        },
+        {
+          "name": "POST /api/products (negative price) - 400",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bad Price\",\n  \"price\": -50,\n  \"category\": \"misc\"\n}"
+            }
+          }
+        },
+        {
+          "name": "PATCH /api/products/1 (empty body) - 400",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          }
+        },
+        {
+          "name": "PATCH /api/products/999 (valid body, missing resource) - 404",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products/999",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 100\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT /api/products/999 (missing resource) - 404",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products/999",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ghost\",\n  \"price\": 10,\n  \"category\": \"misc\"\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT /api/products/1 (missing fields) - 400",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/products/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Incomplete\"\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/products/999 (not found) - 404",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/products/999"
+          }
+        }
+      ]
+    },
+    {
+      "name": "CORS",
+      "item": [
+        {
+          "name": "OPTIONS /api/products (preflight check)",
+          "request": {
+            "method": "OPTIONS",
+            "header": [
+              { "key": "Origin", "value": "http://localhost:5173" },
+              { "key": "Access-Control-Request-Method", "value": "POST" }
+            ],
+            "url": "{{baseUrl}}/api/products"
+          }
+        }
+      ]
+    }
+  ]
+}
