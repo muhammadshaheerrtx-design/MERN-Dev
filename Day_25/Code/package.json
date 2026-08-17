@@ -1,0 +1,15 @@
+{
+  "name": "day25-mongo-crud",
+  "version": "1.0.0",
+  "description": "Day 25 - MongoDB & Mongoose Fundamentals: CRUD script against Atlas",
+  "main": "crud.js",
+  "type": "commonjs",
+  "scripts": {
+    "crud": "node crud.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^8.6.0",
+    "dotenv": "^16.4.5"
+  }
+}
