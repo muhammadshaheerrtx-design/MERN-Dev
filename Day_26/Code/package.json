@@ -1,0 +1,16 @@
+{
+  "name": "day26-mongoose-relationships",
+  "version": "1.0.0",
+  "description": "Day 26 - Querying, Validation & Relationships: User -> Posts with Mongoose references and populate",
+  "main": "queries.js",
+  "type": "commonjs",
+  "scripts": {
+    "seed": "node seed.js",
+    "queries": "node queries.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.6.0"
+  }
+}
