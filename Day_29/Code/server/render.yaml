@@ -1,0 +1,28 @@
+# Render Blueprint — documents the exact settings used to deploy this
+# service. You can either let Render read this file automatically
+# (New -> Blueprint, point at this repo), or just copy these same values
+# into the dashboard manually when creating a Web Service by hand.
+#
+# Root Directory matters: this repo has both client/ and server/, so
+# Render needs to be told to only build/run the server/ folder.
+
+services:
+  - type: web
+    name: taskline-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false # set manually in the Render dashboard — never committed
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 1h
+      - key: CORS_ORIGIN
+        sync: false # set to your deployed client URL after the client is live
