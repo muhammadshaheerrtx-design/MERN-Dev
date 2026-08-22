@@ -1,7 +1,3 @@
-// Controller: holds the actual handler logic.
-// The router (routes/products.js) just maps HTTP verb + path to these functions.
-// This split is the "structuring routes and controllers" part of today's task.
-
 const db = require("../data/products");
 
 // GET /api/products
@@ -27,13 +23,17 @@ function getProductById(req, res) {
   const id = Number(req.params.id);
 
   if (Number.isNaN(id)) {
-    return res.status(400).json({ success: false, error: "id must be a number" });
+    return res
+      .status(400)
+      .json({ success: false, error: "id must be a number" });
   }
 
   const product = db.getById(id);
 
   if (!product) {
-    return res.status(404).json({ success: false, error: `Product ${id} not found` });
+    return res
+      .status(404)
+      .json({ success: false, error: `Product ${id} not found` });
   }
 
   res.status(200).json({ success: true, data: product });
@@ -51,7 +51,9 @@ function createProduct(req, res) {
   }
 
   if (typeof price !== "number" || price < 0) {
-    return res.status(400).json({ success: false, error: "price must be a positive number" });
+    return res
+      .status(400)
+      .json({ success: false, error: "price must be a positive number" });
   }
 
   const newProduct = db.create({ name, price, category });
@@ -73,7 +75,9 @@ function replaceProduct(req, res) {
   const updated = db.replace(id, { name, price, category });
 
   if (!updated) {
-    return res.status(404).json({ success: false, error: `Product ${id} not found` });
+    return res
+      .status(404)
+      .json({ success: false, error: `Product ${id} not found` });
   }
 
   res.status(200).json({ success: true, data: updated });
@@ -85,13 +89,17 @@ function updateProduct(req, res) {
   const updates = req.body || {};
 
   if (Object.keys(updates).length === 0) {
-    return res.status(400).json({ success: false, error: "No fields to update" });
+    return res
+      .status(400)
+      .json({ success: false, error: "No fields to update" });
   }
 
   const updated = db.update(id, updates);
 
   if (!updated) {
-    return res.status(404).json({ success: false, error: `Product ${id} not found` });
+    return res
+      .status(404)
+      .json({ success: false, error: `Product ${id} not found` });
   }
 
   res.status(200).json({ success: true, data: updated });
@@ -103,7 +111,9 @@ function deleteProduct(req, res) {
   const deleted = db.remove(id);
 
   if (!deleted) {
-    return res.status(404).json({ success: false, error: `Product ${id} not found` });
+    return res
+      .status(404)
+      .json({ success: false, error: `Product ${id} not found` });
   }
 
   res.status(200).json({ success: true, message: `Product ${id} deleted` });

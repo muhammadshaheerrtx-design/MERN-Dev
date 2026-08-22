@@ -41,17 +41,14 @@ Server runs at **http://localhost:3000**.
 
 ## REST conventions used
 
-| Verb   | Path                  | Meaning                          |
-|--------|-----------------------|-----------------------------------|
-| GET    | `/api/products`        | list resource collection          |
-| GET    | `/api/products/:id`     | read a single resource            |
-| POST   | `/api/products`         | create a new resource             |
-| PUT    | `/api/products/:id`     | full replace of a resource        |
-| PATCH  | `/api/products/:id`     | partial update of a resource      |
-| DELETE | `/api/products/:id`     | remove a resource                 |
-
-`/api/products` is the **resource endpoint** — the noun (`products`), not a verb.
-The HTTP method itself expresses the action, which is the core REST convention.
+| Verb   | Path                | Meaning                      |
+| ------ | ------------------- | ---------------------------- |
+| GET    | `/api/products`     | list resource collection     |
+| GET    | `/api/products/:id` | read a single resource       |
+| POST   | `/api/products`     | create a new resource        |
+| PUT    | `/api/products/:id` | full replace of a resource   |
+| PATCH  | `/api/products/:id` | partial update of a resource |
+| DELETE | `/api/products/:id` | remove a resource            |
 
 ## Status codes
 

@@ -10,11 +10,13 @@ const {
   deleteTask,
 } = require("../controllers/tasksController");
 
-const { validateTaskBody, validateTaskPatchBody } = require("../middleware/validateTask");
+const {
+  validateTaskBody,
+  validateTaskPatchBody,
+} = require("../middleware/validateTask");
 const requireAuth = require("../middleware/requireAuth");
 
 // Every task route requires a valid JWT — applied once at the router
-// level since it's shared across all of them.
 router.use(requireAuth);
 
 // Note: MongoDB ObjectId validation (is :id even a valid id shape?) now
@@ -22,11 +24,10 @@ router.use(requireAuth);
 // it's a database-specific concern rather than general input shape
 // validation — unlike Day 24's numeric ids, which were checked here.
 
-router.route("/")
-  .get(getAllTasks)
-  .post(validateTaskBody, createTask);
+router.route("/").get(getAllTasks).post(validateTaskBody, createTask);
 
-router.route("/:id")
+router
+  .route("/:id")
   .get(getTaskById)
   .put(validateTaskBody, replaceTask)
   .patch(validateTaskPatchBody, updateTask)

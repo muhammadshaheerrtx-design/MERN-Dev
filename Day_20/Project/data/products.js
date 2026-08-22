@@ -1,6 +1,4 @@
 // In-memory "database" for products.
-// Resets every time the server restarts (this is Day 20 - no real DB yet).
-
 let products = [
   { id: 1, name: "Wireless Mouse", price: 1500, category: "electronics" },
   { id: 2, name: "Mechanical Keyboard", price: 6500, category: "electronics" },

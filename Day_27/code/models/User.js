@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, "email is required"],
-      unique: true, // enforced at the DB level via a unique index
+      unique: true,
       lowercase: true,
       trim: true,
       match: [/^\S+@\S+\.\S+$/, "must be a valid email address"],
@@ -18,16 +18,12 @@ const userSchema = new mongoose.Schema(
     passwordHash: {
       type: String,
       required: true,
-      select: false, // excluded from query results by default — must opt in with .select("+passwordHash")
+      select: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-// Strip passwordHash (and Mongoose's internal __v) whenever a document
-// is converted to JSON — this is what runs automatically when Express
-// calls res.json() on a Mongoose document, so the hash can never
-// accidentally leak in an API response even if someone forgets toPublic().
 userSchema.set("toJSON", {
   transform: (_doc, ret) => {
     delete ret.passwordHash;

@@ -4,6 +4,9 @@ const { sendError } = require("../utils/response");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
+// Protects a route: expects "Authorization: Bearer <token>".
+// On success, attaches the full user record to req.user.
+// On failure, responds with 401 and never calls next().
 function requireAuth(req, res, next) {
   const authHeader = req.headers.authorization;
 

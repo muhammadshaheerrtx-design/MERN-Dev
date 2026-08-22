@@ -1,4 +1,3 @@
-// In-memory "database" so we don't need a real DB yet.
 // Each server restart resets this data (unless nodemon just reloaded the file).
 
 let users = [
