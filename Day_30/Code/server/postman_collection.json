@@ -1,0 +1,250 @@
+{
+  "info": {
+    "name": "Movie Watchlist API",
+    "_postman_id": "d30-movie-watchlist-api",
+    "description": "Full CRUD Movie Watchlist API secured with JWT authentication. Covers register/login, protected routes, and every CRUD happy + error path.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000", "type": "string" },
+    { "key": "token", "value": "", "type": "string" },
+    { "key": "movieId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "POST /api/auth/register - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json && json.data && json.data.token) {",
+                  "  pm.collectionVariables.set('token', json.data.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ali Raza\",\n  \"email\": \"ali@example.com\",\n  \"password\": \"secret123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "POST /api/auth/login - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json && json.data && json.data.token) {",
+                  "  pm.collectionVariables.set('token', json.data.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ali@example.com\",\n  \"password\": \"secret123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "GET /api/auth/me (no token) - 401",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/auth/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Movies - Happy Paths",
+      "item": [
+        {
+          "name": "POST /api/movies (create) - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json && json.data && json.data._id) {",
+                  "  pm.collectionVariables.set('movieId', json.data._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/api/movies",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Interstellar\",\n  \"genre\": \"sci-fi\",\n  \"status\": \"to-watch\"\n}"
+            }
+          }
+        },
+        {
+          "name": "GET /api/movies (list) - 200",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/movies"
+          }
+        },
+        {
+          "name": "GET /api/movies?status=to-watch - 200",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies?status=to-watch",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies"],
+              "query": [{ "key": "status", "value": "to-watch" }]
+            }
+          }
+        },
+        {
+          "name": "GET /api/movies/{{movieId}} - 200",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/movies/{{movieId}}"
+          }
+        },
+        {
+          "name": "PATCH /api/movies/{{movieId}} (mark watched) - 200",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/api/movies/{{movieId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"watched\",\n  \"rating\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT /api/movies/{{movieId}} (full replace) - 200",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/api/movies/{{movieId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Interstellar (rewatch)\",\n  \"genre\": \"sci-fi\",\n  \"status\": \"watched\",\n  \"rating\": 5,\n  \"notes\": \"Still great\"\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/movies/{{movieId}} - 200",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/movies/{{movieId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Movies - Error Paths",
+      "item": [
+        {
+          "name": "GET /api/movies (no token) - 401",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/movies"
+          }
+        },
+        {
+          "name": "POST /api/movies (missing title) - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/api/movies",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"genre\": \"drama\"\n}"
+            }
+          }
+        },
+        {
+          "name": "POST /api/movies (invalid rating) - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/api/movies",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Bad Rating\",\n  \"rating\": 9\n}"
+            }
+          }
+        },
+        {
+          "name": "GET /api/movies/abc (invalid id) - 400",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/movies/abc"
+          }
+        },
+        {
+          "name": "GET /api/movies/64f000000000000000000000 (not found) - 404",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/movies/64f000000000000000000000"
+          }
+        },
+        {
+          "name": "PATCH /api/movies/{{movieId}} (empty body) - 400",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/api/movies/{{movieId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
